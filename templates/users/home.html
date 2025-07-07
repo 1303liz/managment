@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to User Management System</h1>
+    {% if user.is_authenticated %}
+        <p class="lead">Hello, {{ user.get_full_name }}!</p>
+        <hr class="my-4">
+        <p>Manage your profile and account settings.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'profile' %}" role="button">View Profile</a>
+    {% else %}
+        <p class="lead">A secure and efficient way to manage user accounts.</p>
+        <hr class="my-4">
+        <p>Join us today to get started!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Register Now</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'login' %}" role="button">Login</a>
+    {% endif %}
+</div>
+
+{% if user.is_authenticated and user.is_staff %}
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h2>Admin Quick Links</h2>
+        <div class="list-group">
+            <a href="{% url 'admin:users_customuser_changelist' %}" class="list-group-item list-group-item-action">
+                <i class="fas fa-users"></i> Manage Users
+            </a>
+            <a href="{% url 'admin:users_profile_changelist' %}" class="list-group-item list-group-item-action">
+                <i class="fas fa-id-card"></i> Manage Profiles
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
