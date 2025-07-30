@@ -248,18 +248,8 @@ The system includes a complete password reset workflow:
 3. User creates new password
 4. System confirms password change
 
-
-
-### Role-Based Permissions
-
-Three user roles with different permission levels:
-- **Admin**: Full system access
-- **Staff**: Limited management capabilities
-- **Regular User**: Personal profile management only
-
 ## Running the Project
 
-### Starting the Development Server
 
 ```bash
 python manage.py runserver
